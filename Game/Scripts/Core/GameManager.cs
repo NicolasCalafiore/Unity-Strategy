@@ -15,7 +15,7 @@ using UnityEngine;
 public class GameManagers: MonoBehaviour{
     void Start(){
 
-        GameGeneration(); 
+        GameGeneration(); //REFACTOR WIP
 
         MapDependantHexInitialization();
 
@@ -25,9 +25,11 @@ public class GameManagers: MonoBehaviour{
 
         InitializeGameWorld();
 
+        DebugHandler.PrintDebugPipelines(); //TO DO: MOVE WHEN I REFACTOR GAME MANAGER
+
     }
     void GameGeneration(){
-        PlayerManager.GeneratePlayers();
+        PlayerManager.GEN_GENPLAYERS(); //REFACTOR WIP
         MapManager.GenerateTerrainMaps();
         MapManager.GenerateCitiesMaps();
         PlayerManager.GenerateGovernments();
@@ -58,17 +60,17 @@ public class GameManagers: MonoBehaviour{
 
     void InitializeGameWorld()
     {
-        PlayerManager.AllScanForNewPlayers();
-        TraitManager.GenerateCharacterTraits();
-        DiplomacyManager.GenerateStartingRelationships();
-        PlayerManager.SimulateGovernments();
-        UIManager.FindUIComponents();
-        PlayerManager.SetPlayerView(PlayerManager.player_list[1]);//
-        FogManager.ShowFogOfWar(); //
-        GraphicsManager.SpawnAIFlags();
-        TerrainManager.GenerateHexAppeal();
-        PlayerManager.InitializePlayerPriorities();
-        GraphicsManager.UpdateAllPlayerUIPriorities();  //Used for cities. Will need to refactor
+        //PlayerManager.AllScanForNewPlayers();
+        //TraitManager.GenerateCharacterTraits();
+        //DiplomacyManager.GenerateStartingRelationships();
+        //PlayerManager.SimulateGovernments();
+        //UIManager.FindUIComponents();
+        //PlayerManager.SetPlayerView(PlayerManager.player_list[1]);//
+        //FogManager.ShowFogOfWar(); //
+        //GraphicsManager.SpawnAIFlags();
+        //TerrainManager.GenerateHexAppeal();
+        //PlayerManager.InitializePlayerPriorities();
+        //GraphicsManager.UpdateAllPlayerUIPriorities();  //Used for cities. Will need to refactor
     }
 
     

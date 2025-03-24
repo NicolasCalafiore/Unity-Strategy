@@ -17,7 +17,7 @@ namespace Terrain {
     public static class  MapManager
     {
         
-        public static Vector2 map_size = new Vector2(100, 100);
+        public static Vector2 map_size = new Vector2(25, 25);
         private static ElevationStrat elevation_strategy = ElevationStrat.Groupings;                  
         private static LandStrat land_strategy = LandStrat.Perlin;
         private static RegionStrat region_strategy = RegionStrat.MapFactor;
@@ -25,6 +25,7 @@ namespace Terrain {
         private static ResourceStrat resource_strategy = ResourceStrat.RegionRandom;
         private static CapitalStrat capital_strategy =  CapitalStrat.Random;  //TO DO: Convert to enum
 
+        // Handlers are used to handle different algorithms for each map generation
         public static TerrainMapHandler terrain_map_handler;
         public static CityMapHandler city_map_handler;
         public static TerritoryMapHandler territory_map_handler;

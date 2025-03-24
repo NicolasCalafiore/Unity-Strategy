@@ -18,19 +18,22 @@ using UnityEditor;
 
 public static class DebugHandler
 {
+    public static List<string> player_messages_pipeline = new List<string>() {};
 
-    /*
-        DebugHandler is used to spawn debug viewers
-        DebugHandler is used to print debug messages
-    */
+    public static void PrintDebugPipelines()
+    {
+        foreach (string message in player_messages_pipeline)
+            Debug.Log(message);
+        
+    }
 
-        public static Dictionary<ForeignEnums.RelationshipLevel, Color> relationship_color = new Dictionary<ForeignEnums.RelationshipLevel, Color>(){
-            {ForeignEnums.RelationshipLevel.Hostile, Color.red},
-            {ForeignEnums.RelationshipLevel.Unfriendly, Color.yellow},
-            {ForeignEnums.RelationshipLevel.Neutral, Color.gray},
-            {ForeignEnums.RelationshipLevel.Friendly, Color.green},
-            {ForeignEnums.RelationshipLevel.Welcoming, Color.blue}
-        };
+    public static Dictionary<ForeignEnums.RelationshipLevel, Color> relationship_color = new Dictionary<ForeignEnums.RelationshipLevel, Color>(){
+        {ForeignEnums.RelationshipLevel.Hostile, Color.red},
+        {ForeignEnums.RelationshipLevel.Unfriendly, Color.yellow},
+        {ForeignEnums.RelationshipLevel.Neutral, Color.gray},
+        {ForeignEnums.RelationshipLevel.Friendly, Color.green},
+        {ForeignEnums.RelationshipLevel.Welcoming, Color.blue}
+    };
 
     public static void DisplayMessage(List<string> message){
         string MESSAGE = "";

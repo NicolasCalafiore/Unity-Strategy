@@ -11,6 +11,7 @@ using Cities;
 using Character;
 using TMPro;
 using Terrain;
+using Assets.Game.Scripts.Core.Graphics;
 
 namespace Graphics {
 
@@ -458,18 +459,21 @@ namespace Graphics {
         }
 
         public static List<Color> GenerateDistinctColors(int count) {
-        List<Color> colors = new List<Color>();
-        float hueStep = 1f / count;
-        for (int i = 0; i < count; i++) {
-            float hue = i * hueStep;
-            // Keeping saturation and lightness values constant to ensure the color is bright and saturated.
-            // Adjust these values if you want different shades or less saturation.
-            float saturation = 0.75f;
-            float lightness = 0.5f;
-            Color color = Color.HSVToRGB(hue, saturation, lightness);
-            colors.Add(color);
+            List<Color> colors = new List<Color>();
+            float hueStep = 1f / count;
+            for (int i = 0; i < count; i++) {
+                float hue = i * hueStep;
+                float saturation = 0.75f;
+                float lightness = 0.5f;
+                Color color = Color.HSVToRGB(hue, saturation, lightness);
+                colors.Add(color);
+            }
+            return colors;
         }
-        return colors;
-    }
+
+        public static void UpdateGraphics(GraphicCommand command)
+        {
+            //TO DO: IMPLEMENT GRAPHICS COMMANDS
+        }
     }
 }

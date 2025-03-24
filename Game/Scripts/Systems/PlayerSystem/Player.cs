@@ -39,6 +39,7 @@ namespace Players {
 
 
         public Player(string name, int id){
+            DebugHandler.player_messages_pipeline.Add($"Player created: {id} - {name}");
             this.name = name;
             this.team_color = new Color(Random.Range(0f, 1f),Random.Range(0f, 1f),Random.Range(0f, 1f));
             this.id = id;
@@ -48,6 +49,7 @@ namespace Players {
             this.knowledge_level = UnityEngine.Random.Range(0, 5);
             this.heritage_level = UnityEngine.Random.Range(0, 5);
             this.belief_level = UnityEngine.Random.Range(0, 5);
+
 
             this.main_priorities.Add(new SciencePriority());
             this.main_priorities.Add(new ReligionPriority());

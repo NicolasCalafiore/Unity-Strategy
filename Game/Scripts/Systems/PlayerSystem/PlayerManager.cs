@@ -17,36 +17,27 @@ namespace Players {
         public static Dictionary<float, Player> player_id_to_player = new Dictionary<float, Player>();
         public static List<Player> player_list = new List<Player>();
         public static Player player_view; 
-        private static int player_count = 100; 
+        private static int player_count = 10; 
 
         
-        public static void GeneratePlayers(){
-            CreatePlayers(0);
-            SetGovernmentTypes(0);
+        public static void GEN_GENPLAYERS(){
+            CreatePlayers();
+            SetGovernmentTypes();
             SetStateNameTitle();
-
-            player_id_to_player.Add(-1, null);  //NULL PLAYER/ID=-1 --> None/Null Player
+            player_id_to_player.Add(-1, null);  //NULL PLAYER/ID=-1 --> None/Null Player TO DO: FIGURE OUT WHY I PUT THESE HERE (BUG FIX?)
         }
 
-        public static void CreatePlayers(int player_id){        // TO DO: EVALUATE FUNCTIONAL PROGRAMMING
-            if(player_id < player_count){
-                player_list.Add(new Player("ERRL", player_id));
-                CreatePlayers(player_id + 1);
-            }
+        private static void CreatePlayers()
+        {
+            for(int i = 0; i <= player_count; i++)
+                player_list.Add(new Player("Player " + i, i));
         }
 
 
-        public static void SimulateGovernments(){
-            foreach(Player i in player_list)     
-                i.SimulateGovernment();
-        }
-
-        private static void SetGovernmentTypes(int index){
-            if(index >= player_list.Count) return;
-
-            int random_index = UnityEngine.Random.Range(1, GetGovernmentTypes().Count);
-            player_list[index].government_type = GetGovernmentTypes()[random_index];
-            SetGovernmentTypes(index + 1);
+        private static void SetGovernmentTypes()
+        {
+            for (int index = 0; index < player_list.Count; index++)
+                player_list[index].government_type = GetGovernmentTypes()[Random.Range(1, GetGovernmentTypes().Count)];
         }
         private static void SetStateNameTitle()
         {
@@ -108,5 +99,10 @@ namespace Players {
                 player.CalculatePriorities();
             
         }
+
+        //public static void SimulateGovernments(){
+        //    foreach(Player i in player_list)     
+        //        i.SimulateGovernment();
+        //}
     }
 }
